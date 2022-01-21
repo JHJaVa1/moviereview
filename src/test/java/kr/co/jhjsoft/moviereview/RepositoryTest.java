@@ -86,11 +86,24 @@ public class RepositoryTest {
         }
     }
     //특정 영화에 대한 정보를 가져오는 메서드
-    @Test
+    //@Test
     public void testGetMovie(){
         List<Object[]> result = movieRepository.getMovieWithAll(12L);
         for(Object[] r : result){
             System.out.println(Arrays.toString(r));
         }
+    }
+
+    @Test
+    public void testGetReviews(){
+        List<Review> list = reviewRepository.findByMovie(Movie.builder().mno(71L).build());
+        for(Review r : list){
+            //회원의 이메일을 출력
+            //에러 난다.
+            System.out.println(r.getMember().getEmail());
+
+        }
+
+        System.out.println(list);
     }
 }
